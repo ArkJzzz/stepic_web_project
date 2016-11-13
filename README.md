@@ -1,5 +1,10 @@
-# stepic_web_project
+# Stepic Web Project
 
-##usage:
-### git clone https://github.com/ArkJzzz/stepic_web_project.git
-### bash /home/box/web/init.sh
+Clone project:
+
+    git clone https://github.com/ArkJzzz/stepic_web_project.git
+
+Start init script:
+
+	bash /home/box/web/init.sh
+
