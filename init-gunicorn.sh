@@ -11,4 +11,4 @@ sudo /etc/init.d/gunicorn restart
 
 
 cd /home/box/web
-gunicorn -b 0.0.0.0:8080 hello:app
+gunicorn -c /etc/gunicorn.d/hello.py hello:wsgi_application

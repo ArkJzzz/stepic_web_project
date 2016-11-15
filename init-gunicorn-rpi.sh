@@ -9,6 +9,6 @@ sudo /etc/init.d/gunicorn restart
 
 
 
-gunicorn -b 0.0.0.0:8080 /home/pi/stepic_web_project/web/hello.py &
+gunicorn -c /etc/gunicorn.d/hello.py hello:wsgi_application &
 
 
