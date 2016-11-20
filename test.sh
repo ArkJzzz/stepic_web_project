@@ -7,6 +7,8 @@ django-admin startproject ask
 
 mkdir -p ~/ask/qa
 cp ~/local_files/local_views.py ~/ask/qa/views.py
+cp ~/local_files/local_urls.py ~/ask/qa/urls.py
+
 
 mkdir -p ~/web/{public/{img,js,css},{etc,uploads}}
 
