@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echh "Configure Nginx:"
+echo "Configure Nginx:"
 echo "removing /etc/nginx/sites-enabled/default"
 sudo rm /etc/nginx/sites-enabled/default
 echo "removing /etc/nginx/sites-enabled/test.conf"
@@ -17,7 +17,7 @@ sudo rm /etc/gunicorn.d/hello.py
 sudo rm /etc/gunicorn.d/hello.config
 sudo rm -f /etc/gunicorn.d/ask.config
 
-echo "creating simlinks:"
+echo "creating simlinks"
 sudo ln -s /home/pi/stepic_web_project/etc/hello-rpi-gunicorn_config.py /etc/gunicorn.d/hello.config
 #sudo ln -s /home/pi/stepic_web_project/etc/ask-rpi-gunicorn_config.py /etc/gunicorn.d/ask.config
 echo "restarting GUNICORN daemon"
