@@ -1,6 +1,6 @@
 CONFIG = {
     'mode': 'wsgi',
-    'working_dir': '/home/pi/stepic_web_project/web',
+    'chdir': '/home/pi/stepic_web_project/web',
     'python': '/usr/bin/python3',
     'args': (
         '--bind=0.0.0.0:8080',
