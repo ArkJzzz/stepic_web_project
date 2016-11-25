@@ -13,12 +13,12 @@ sudo /etc/init.d/nginx restart
 
 echo "Configure GUNICORN:"
 echo "removing old configurations"
-sudo rm /etc/gunicorn.d/hello.py
-sudo rm /etc/gunicorn.d/hello.config
+sudo rm -f /etc/gunicorn.d/hello.py
+sudo rm -f /etc/gunicorn.d/hello.config
 sudo rm -f /etc/gunicorn.d/ask.config
 
 echo "creating simlinks"
-sudo ln -s /home/pi/stepic_web_project/etc/hello-rpi-gunicorn_config.py /etc/gunicorn.d/hello.config
+sudo ln -s /home/pi/stepic_web_project/etc/test_hello-rpi-gunicorn_config.py /etc/gunicorn.d/hello_config.py
 #sudo ln -s /home/pi/stepic_web_project/etc/ask-rpi-gunicorn_config.py /etc/gunicorn.d/ask.config
 echo "restarting GUNICORN daemon"
 sudo /etc/init.d/gunicorn restart

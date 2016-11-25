@@ -1,5 +1,5 @@
 
-def wsgi_application(environ, start_response):
+def wsgi(environ, start_response):
     status = "200 OK"
     response_headers = [('Content-type','text/plain')]
     body = ""
