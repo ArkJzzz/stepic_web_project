@@ -20,9 +20,8 @@ sudo rm -f /etc/gunicorn.d/ask.config
 echo "creating simlinks"
 sudo ln -s /home/pi/stepic_web_project/etc/test_hello-rpi-gunicorn_config.py /etc/gunicorn.d/hello_config.py
 #sudo ln -s /home/pi/stepic_web_project/etc/ask-rpi-gunicorn_config.py /etc/gunicorn.d/ask.config
-echo "restarting GUNICORN daemon"
-sudo /etc/init.d/gunicorn restart
+echo "starting GUNICORN as daemon"
 
-#gunicorn -c /etc/gunicorn.d/hello.py hello:wsgi_application &
+/usr/bin/gunicorn -c /etc/gunicorn.d/hello_config.py hello:wsgi -D
 
 
