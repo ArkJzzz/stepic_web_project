@@ -6,7 +6,7 @@ sudo rm /etc/nginx/sites-enabled/default
 echo "removing /etc/nginx/sites-enabled/test.conf"
 sudo rm  /etc/nginx/sites-enabled/test.conf
 echo "creating simlink for config nginx"
-sudo ln -s /home/pi/stepic_web_project/web/etc/nginx-rpi.conf  /etc/nginx/sites-enabled/test.conf
+sudo ln -s /home/pi/stepic_web_project/web/etc/nginx-django.conf  /etc/nginx/sites-enabled/test.conf
 echo "restarting Nginx"
 sudo /etc/init.d/nginx restart
 
