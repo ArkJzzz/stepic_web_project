@@ -1,28 +1,24 @@
 #!/bin/bash
 
 echo "Configure Nginx:"
-echo "removing /etc/nginx/sites-enabled/default"
-sudo rm /etc/nginx/sites-enabled/default
-echo "removing /etc/nginx/sites-enabled/test.conf"
-sudo rm  /etc/nginx/sites-enabled/test.conf
-echo "creating simlink for config nginx"
-sudo ln -s /home/pi/stepic_web_project/web/etc/nginx-django.conf  /etc/nginx/sites-enabled/test.conf
-echo "restarting Nginx"
-sudo /etc/init.d/nginx restart
-
+echo "removing old configs from /etc/nginx/sites-enabled/"
+sudo rm -f /etc/nginx/sites-enabled/{default,test.conf}
+echo "creating simlinks"
+sudo ln -s /home/pi/stepic_web_project/web/etc/nginx-rpi.conf  /etc/nginx/sites-enabled/test.conf
 
 echo "Configure GUNICORN:"
-echo "removing old configurations"
-sudo rm -f /etc/gunicorn.d/hello.py
-sudo rm -f /etc/gunicorn.d/hello.config
-sudo rm -f /etc/gunicorn.d/hello_config.py
-sudo rm -f /etc/gunicorn.d/ask.config
-sudo mkdir /etc/gunicorn.d/backup_configs
-sudo mv /etc/gunicorn.d/* backup_configs
+echo "removing old configurations from /etc/gunicorn.d/"
+sudo rm -f /etc/gunicorn.d/{hello*,ask*}
+sudo mkdir -p /etc/gunicorn.d/backup_configs
+sudo mv -f /etc/gunicorn.d/* /etc/gunicorn.d/backup_configs
 echo "creating simlinks"
 sudo ln -s /home/pi/stepic_web_project/etc/hello-rpi-gunicorn.config /etc/gunicorn.d/hello.config
 #sudo ln -s /home/pi/stepic_web_project/etc/ask-rpi-gunicorn_config.py /etc/gunicorn.d/ask.config
-echo "restarting GUNICORN daemon"
+
+echo "restarting Nginx"
+sudo /etc/init.d/nginx restart
+
+echo "restarting GUNICORN"
 sudo /etc/init.d/gunicorn restart
 
 
