@@ -17,7 +17,7 @@ sudo rm -f /etc/gunicorn.d/hello.py
 sudo rm -f /etc/gunicorn.d/hello.config
 sudo rm -f /etc/gunicorn.d/hello_config.py
 sudo rm -f /etc/gunicorn.d/ask.config
-sudo mkdir /etc/gunicorn.d/backup_configs
+sudo mkdir -p /etc/gunicorn.d/backup_configs
 sudo mv /etc/gunicorn.d/* backup_configs
 echo "creating simlinks"
 sudo ln -s /home/pi/stepic_web_project/etc/hello-rpi-gunicorn.config /etc/gunicorn.d/hello.config
