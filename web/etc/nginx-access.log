@@ -146,3 +146,7 @@
 192.168.88.251 - - [04/Feb/2017:19:34:54 +0000] "GET /hello/?a=b HTTP/1.1" 502 172 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
 192.168.88.251 - - [04/Feb/2017:19:53:58 +0000] "GET /hello/?a=b HTTP/1.1" 200 15 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
 192.168.88.251 - - [04/Feb/2017:19:54:44 +0000] "GET /hello/?F-U-C-K HTTP/1.1" 200 18 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+192.168.88.251 - - [05/Feb/2017:10:17:05 +0000] "GET /favicon.ico HTTP/1.1" 404 142 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+192.168.88.251 - - [05/Feb/2017:10:17:06 +0000] "GET /favicon.ico HTTP/1.1" 404 142 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+192.168.88.251 - - [05/Feb/2017:10:17:07 +0000] "GET /hello/?F-U-C-K HTTP/1.1" 200 18 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+192.168.88.251 - - [05/Feb/2017:10:17:52 +0000] "GET /hello/?F-U-C-K&them_all HTTP/1.1" 200 28 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
