@@ -9,7 +9,7 @@ from django.utils import timezone
 class Question(models.Model):
 	title = models.CharField(max_lengt=255)
 	text = models.TextField()
-	added_at = models.DateTimeField(blank=True, default=timezone.now)
+	added_at = models.DateTimeField(auto_now_add=True, default=timezone.now)
 	rating = models.IntegerField(default=0)
 	author = models.ForeignKey(User)
 	likes = models.IntegerField(default=0)
