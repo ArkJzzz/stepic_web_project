@@ -2,13 +2,14 @@ from __future__ import unicode_literals
 
 from django.db import models
 from djago.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 
 class Question(models.Model):
 	title = models.CharField(max_lengt=255)
 	text = models.TextField()
-	added_at = models.DateTimeField(blank=True)
+	added_at = models.DateTimeField(blank=True, default=timezone.now)
 	rating = models.IntegerField(default=0)
 	author = models.ForeignKey(User)
 	likes = models.IntegerField(default=0)
