@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ask',
     'qa',
 ]
 
@@ -127,13 +126,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-#####
-# This is setting will be in finish:
-# Import settings from local file (BASE_DIR + '/web/ask/ask/local_settings.py')
-
-try:
-    from ask.local_settings import *
-except ImportError:
-    pass
