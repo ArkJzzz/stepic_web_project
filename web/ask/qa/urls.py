@@ -20,4 +20,10 @@ urlpatterns = [
     url(r'^$', views.test, name = 'test'),
     
 ]
-	
+
+
+#/blog/post/about_me/ 
+urlpatterns = [
+	url(r'^post/(?P<slug>\w+)/$', post_details, name='post_details'),
+	url(r'^tag/^(?P<slug>\w+)/$', tag_details, name='tag_details'),
+]
