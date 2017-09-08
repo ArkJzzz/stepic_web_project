@@ -17,13 +17,17 @@ from django.conf.urls import include, url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.test, name = 'test'),
-    
+    url(r'^$', views.test, name = 'test'), # URL = /
+    url(r'^index$', views.index, name='index'), #URL = /index 
+    url(r'^(?P<page_num>\d+)$', page, name='page'), #URL = /?page=2
+    url(r'^popular/(?P<page_num>\d+)$', page, name='page'), #URL = /popular/?page=3
+    url(r'^question/(?P<page_num>\d+)$', page, name='page'), #URL = /question/5/
 ]
 
 
-#/blog/post/about_me/ 
-urlpatterns = [
-	url(r'^post/(?P<slug>\w+)/$', post_details, name='post_details'),
-	url(r'^tag/^(?P<slug>\w+)/$', tag_details, name='tag_details'),
-]
+#urlpatterns = [
+#	url(r'^post/(?P<slug>\w+)/$', post_details, name='post_details'), #URL = /post/about_me/
+#	url(r'^tag/^(?P<slug>\w+)/$', tag_details, name='tag_details'), #URL = /tag/pisanina
+#]
+
+

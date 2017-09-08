@@ -3,6 +3,9 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_GET
 
 # Create your views here.
+def index(request):
+	return HttpResponse('Hello from django girls')
+
 def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
