@@ -18,7 +18,7 @@ class PostManager(models.Manager):
 		qs = self.order_by('-id')
 		res = []
 		if sinse is not None:
-			qs = qs.filter('is__lt'=sinse)
+			qs = qs.filter(is__lt='sinse')
 		for p in qs[:1000]:
 			if len(res) == 0:
 				res.append(p)
