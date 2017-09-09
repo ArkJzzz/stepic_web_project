@@ -22,7 +22,7 @@ sudo /etc/init.d/mysql start
 mysql -uroot -e "CREATE DATABASE myprojdb"
 
 # Django migrations
-python3 ${BASE_DIR}/web/ask/manage.py makemigrations qa                               
-python3 ${BASE_DIR}/web/ask/manage.py migrate 
+python ${BASE_DIR}/web/ask/manage.py makemigrations qa                               
+python ${BASE_DIR}/web/ask/manage.py migrate 
 
 echo "DONE"
