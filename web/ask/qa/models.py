@@ -20,7 +20,7 @@ class PostManager(models.Manager):
 		if sinse is not None:
 			qs = qs.filter('is__lt'=sinse)
 		for p in qs[:1000]:
-			if len(res)=0:
+			if len(res) == 0:
 				res.append(p)
 			elif res[-1].category !=p.category:
 				res.append(p)
