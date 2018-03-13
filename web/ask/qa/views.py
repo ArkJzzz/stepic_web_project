@@ -1,21 +1,36 @@
+# -*- coding: utf-8 -*-
+
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_GET
 
 # Create your views here.
-def index(request):
-	return HttpResponse('Hello from django girls')
 
-def test(request, *args, **kwargs):
-    return HttpResponse('OK')
+def test(request):
+	return HttpResponse('OK')
+
+def index(request):
+	page = request.GET.get('page')
+	return HttpResponse('Главная страница. Список "новых" вопросов.')
+
+def popular(request, page):
+	return HttpResponse('Cписок "популярных" вопросов.')
+
+def question(request, *args):
+	question = args[0]
+	return HttpResponse('Страница одного вопроса.')
+
+
+		
+
+
+
+
 
 def post_details(request, slug):
-	try:
-		post = Post.objects.get(slug=slug)
-	except Post.DoesNotExist:
-		raise Http404
+	post = get_object_or_404(Post, slug=slug)
 	return render(request, 'blog/post_details.html', {
-		'post':   post,
+		'post':		post,
 		})
 
 @require_GET

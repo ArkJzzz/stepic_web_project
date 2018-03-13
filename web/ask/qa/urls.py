@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """ask URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -17,11 +19,10 @@ from django.conf.urls import include, url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.test, name = 'test'), # URL = /
-    url(r'^index$', views.index, name='index'), #URL = /index 
-#    url(r'^(?P<page_num>\d+)$', page, name='page'), #URL = /?page=2
-#    url(r'^popular/(?P<page_num>\d+)$', page, name='page'), #URL = /popular/?page=3
-#    url(r'^question/(?P<page_num>\d+)$', page, name='page'), #URL = /question/5/
+    url(r'^test/$', views.test, name = 'test'), 						#URL = qa/test
+    url(r'^$', views.index, name='index'), 				#URL = qa/?page=2
+    url(r'^popular/$', views.popular, name='popular'), 	#URL = qa/popular/?page=3
+    url(r'^question/(\d+)/$', views.question, name='question'), 		#URL = qa/question/5/
 ]
 
 
