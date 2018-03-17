@@ -1,2 +1,5 @@
 #файлы виртуального окружения
 env/
+web/ask/ask/__pycache__/
+web/ask/qa/__pycache__/
+web/ask/qa/migrations/__pycache__/
