@@ -9,11 +9,14 @@ from django.views.decorators.http import require_GET
 def test(request):
 	return HttpResponse('OK')
 
+
+#URL = /?page=2
+
 def index(request):
 	page = request.GET.get('page')
 	return HttpResponse('Главная страница. Список "новых" вопросов.')
 
-def popular(request, page):
+def popular(request):
 	return HttpResponse('Cписок "популярных" вопросов.')
 
 def question(request, *args):
@@ -21,11 +24,7 @@ def question(request, *args):
 	return HttpResponse('Страница одного вопроса.')
 
 
-		
-
-
-
-
+###################################################
 
 def post_details(request, slug):
 	post = get_object_or_404(Post, slug=slug)
