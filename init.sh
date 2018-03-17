@@ -1,9 +1,8 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install python-pip python-dev mysql-server libmysqlclient-dev
-sudo apt-get install python3-dev
-sudo pip3 install django mysqlclient
+sudo apt-get install python-virtualenv python3-dev mysql-server libmysqlclient-dev
+# sudo pip3 install django mysqlclient
 
 BASE_DIR=/home/box
 
@@ -29,6 +28,12 @@ sudo /etc/init.d/gunicorn restart
 # start MySQL 
 sudo /etc/init.d/mysql start
 mysql -uroot -e "CREATE DATABASE myprojdb"
+
+
+# virtual inviroment
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
 
 # 
 python3 ${BASE_DIR}/web/ask/manage.py makemigrations qa                               
