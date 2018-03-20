@@ -3,25 +3,38 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_GET
+from .models import Question
+
 
 # Create your views here.
 
 def test(request):
+
 	return HttpResponse('OK')
 
 
 #URL = /?page=2
 
 def index(request):
-	page = request.GET.get('page')
+	try:
+		page = request.GET.get('page')
+	except Question.DoesNotExist:
+		raise Http404
 	return HttpResponse('Главная страница. Список "новых" вопросов.')
+
+
+
+
 
 def popular(request):
 	return HttpResponse('Cписок "популярных" вопросов.')
 
-def question(request, *args):
-	question = args[0]
-	return HttpResponse('Страница одного вопроса.')
+def question(request, question_id):
+	question = get_object_or_404(Question, pk=question_id)
+	return render(request, 'qa/question.html', {
+		'question': question,
+		})
+
 
 
 ###################################################
