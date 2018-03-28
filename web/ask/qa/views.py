@@ -3,47 +3,84 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_GET
-from .models import Question
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Question, Answer
 
 
 # Create your views here.
 
 def test(request):
-
 	return HttpResponse('OK')
 
-
-#URL = /?page=2
-
-def index(request):
-	try:
-		page = request.GET.get('page')
-	except Question.DoesNotExist:
-		raise Http404
-	return HttpResponse('Главная страница. Список "новых" вопросов.')
-
-
-
-
-
-def popular(request):
-	return HttpResponse('Cписок "популярных" вопросов.')
-
+#URL = /qa/question/1
 def question(request, question_id):
 	question = get_object_or_404(Question, pk=question_id)
+	answers = Answer.objects.to_question(pk=question_id)
 	return render(request, 'qa/question.html', {
 		'question': question,
+		'answers' : answers,
 		})
 
+
+@require_GET
+#URL = /?page=2
+def index(request):
+	question_list=Question.objects.new()
+
+	paginator = Paginator(question_list, 1)
+	page = request.GET.get('page')
+
+	try:
+		questions = paginator.page(page)
+	except PageNotAnInteger:
+		questions = paginator.page(1)
+	except EmptyPage:
+		questions = paginator.page(paginator.num_pages)
+
+#	limit = request.GET.get('limit', 10)
+#	page = request.GET.get('page', 1)
+#	paginator = Paginator(questions, limit)
+#	paginator.baseurl = '/?page='
+#	page = paginator.page(page) #Page
+
+	return render(request, 'qa/index.html', {
+		'questions': questions,
+		'paginator': paginator,
+		'page': page,
+		})
+
+
+#URL = /popular/?page=2
+def popular(request):
+	question_list=Question.objects.popular()
+
+	paginator = Paginator(question_list, 1)
+	page = request.GET.get('page')
+
+	try:
+		questions = paginator.page(page)
+	except PageNotAnInteger:
+		questions = paginator.page(1)
+	except EmptyPage:
+		questions = paginator.page(paginator.num_pages)
+
+#	limit = request.GET.get('limit', 10)
+#	page = request.GET.get('page', 1)
+#	paginator = Paginator(questions, limit)
+#	paginator.baseurl = '/?page='
+#	page = paginator.page(page) #Page
+
+	return render(request, 'qa/popular.html', {
+		'questions': questions,
+		'paginator': paginator,
+		'page': page,
+		})
 
 
 ###################################################
 
-def post_details(request, slug):
-	post = get_object_or_404(Post, slug=slug)
-	return render(request, 'blog/post_details.html', {
-		'post':		post,
-		})
+
 
 @require_GET
 def post_details(request, slug):
@@ -70,12 +107,4 @@ def post_list_all(request):
 		posts:		page.object_list,
 		paginator:	paginator,
 		page:		page,
-		})
-
-def post_list_main(request):
-	since = request.GET.get('since')
-	post = Post.objects.main(since)
-	return render(request, 'blog/post_main.html', {
-		posts:	post,
-		since:	post[-1].id,
 		})

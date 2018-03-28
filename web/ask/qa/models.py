@@ -13,6 +13,12 @@ class QuestionManager(models.Manager):
 	def popular(self):
 		return self.order_by('-rating')
 
+class AnswerManager(models.Manager):
+	def all(self):
+		return self.order_by('-question')
+	def to_question(self, pk):
+		return self.filter(question__pk=pk)
+
 
 class Question(models.Model):
 	objects = QuestionManager()
@@ -24,6 +30,7 @@ class Question(models.Model):
 	likes = models.ManyToManyField(User, related_name='question_like_user') #wtf?
 
 class Answer(models.Model):
+	objects = AnswerManager()
 	text = models.TextField()
 	added_at = models.DateTimeField(blank=True)
 	question = models.ForeignKey(Question, on_delete=models.DO_NOTHING)
