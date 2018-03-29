@@ -28,7 +28,7 @@ def question(request, question_id):
 def index(request):
 	question_list=Question.objects.new()
 
-	paginator = Paginator(question_list, 1)
+	paginator = Paginator(question_list, 10)
 	page = request.GET.get('page')
 
 	try:
@@ -55,7 +55,7 @@ def index(request):
 def popular(request):
 	question_list=Question.objects.popular()
 
-	paginator = Paginator(question_list, 1)
+	paginator = Paginator(question_list, 10)
 	page = request.GET.get('page')
 
 	try:
@@ -82,29 +82,29 @@ def popular(request):
 
 
 
-@require_GET
-def post_details(request, slug):
-	post = get_object_or_404(Post, slug=slug)
-	try:
-		vote = post.votes.filter(user=request.user)[0]
-	except Vote.DoesNotExist:
-		vote = None
-	return render(request, 'blog/post_details.html', {
-		'post':		post,
-		'category':	post.category,
-		'tags':		post.tags.all()[:],
-		'vote':		vote,
-		})
-
-def post_list_all(request):
-	posts = Post.objects.filter(is_published=True)
-	limit = request.GET.get('limit', 10)
-	page = request.GET.get('page', 1)
-	paginator = Paginator(posts, limit)
-	paginator.baseurl = '/blog/all_posts/?page='
-	page = paginator.page(page) #Page
-	return render(request, 'blog/post_by_tag.html', {
-		posts:		page.object_list,
-		paginator:	paginator,
-		page:		page,
-		})
+#@require_GET
+#def post_details(request, slug):
+#	post = get_object_or_404(Post, slug=slug)
+#	try:
+#		vote = post.votes.filter(user=request.user)[0]
+#	except Vote.DoesNotExist:
+#		vote = None
+#	return render(request, 'blog/post_details.html', {
+#		'post':		post,
+#		'category':	post.category,
+#		'tags':		post.tags.all()[:],
+#		'vote':		vote,
+#		})
+#
+#def post_list_all(request):
+#	posts = Post.objects.filter(is_published=True)
+#	limit = request.GET.get('limit', 10)
+#	page = request.GET.get('page', 1)
+#	paginator = Paginator(posts, limit)
+#	paginator.baseurl = '/blog/all_posts/?page='
+#	page = paginator.page(page) #Page
+#	return render(request, 'blog/post_by_tag.html', {
+#		posts:		page.object_list,
+#		paginator:	paginator,
+#		page:		page,
+#		})

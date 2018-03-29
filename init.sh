@@ -1,7 +1,8 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install python-virtualenv python3-dev mysql-server libmysqlclient-dev
+sudo apt-get install python3-dev mysql-server libmysqlclient-dev lynx	
+#sudo apt-get install python-virtualenv 
 # sudo pip3 install django mysqlclient
 
 BASE_DIR=/home/box
@@ -31,9 +32,9 @@ mysql -uroot -e "CREATE DATABASE myprojdb"
 
 
 # virtual inviroment
-virtualenv env
-source env/bin/activate
-pip install -r requirements.txt
+#virtualenv env
+#source env/bin/activate
+#pip install -r requirements.txt
 
 # 
 python3 ${BASE_DIR}/web/ask/manage.py makemigrations qa                               

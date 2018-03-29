@@ -6,7 +6,7 @@
     _____________________________________________________________________-->
 	{% for question in questions %}
 		<h3>{{ question.title }}</h3>
-		<p><a href="{% url 'question' question_id=question.pk %}">подробнее...</a></p>
+		<p><a href="{% url 'question' question_id=question.pk %}">{{ question.title }}</a></p>
 	{% endfor %}
 
 {% endblock %}
