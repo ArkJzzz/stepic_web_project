@@ -14,15 +14,15 @@ rm -r ${BASE_DIR}/stepic_web_project/
 mkdir -p ${BASE_DIR}/web/{public/{img,js,css},{etc,uploads}}
 
 # remove old config and restart NGINX
-sudo rm -f /etc/nginx/sites-enabled/*
-sudo ln -s ${BASE_DIR}/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
+#sudo rm -f /etc/nginx/sites-enabled/*
+#sudo ln -s ${BASE_DIR}/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
 sudo /etc/init.d/nginx restart
 
 
 # restart GUnicorn
 #sudo rm -f /etc/gunicorn.d/*
-sudo ln -s ${BASE_DIR}/etc/hello-gunicorn.config /etc/gunicorn.d/hello.config
-sudo ln -s ${BASE_DIR}/etc/django-gunicorn.config /etc/gunicorn.d/django.config
+#sudo ln -s ${BASE_DIR}/etc/hello-gunicorn.config /etc/gunicorn.d/hello.config
+#sudo ln -s ${BASE_DIR}/etc/django-gunicorn.config /etc/gunicorn.d/django.config
 sudo /etc/init.d/gunicorn restart
 
 
