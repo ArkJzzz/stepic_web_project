@@ -20,9 +20,9 @@ sudo /etc/init.d/nginx restart
 
 
 # restart GUnicorn
-#sudo rm -f /etc/gunicorn.d/*
+sudo rm -f /etc/gunicorn.d/*
 #sudo ln -s ${BASE_DIR}/etc/hello-gunicorn.config /etc/gunicorn.d/hello.config
-#sudo ln -s ${BASE_DIR}/etc/django-gunicorn.config /etc/gunicorn.d/django.config
+sudo ln -s ${BASE_DIR}/etc/django-gunicorn.config /etc/gunicorn.d/django.config
 sudo /etc/init.d/gunicorn restart
 
 
