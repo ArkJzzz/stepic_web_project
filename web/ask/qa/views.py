@@ -15,8 +15,8 @@ def test(request):
 
 #URL = /qa/question/1
 def question(request, question_id):
-	question = get_object_or_404(Question, pk=question_id)
-	answers = Answer.objects.to_question(pk=question_id)
+	question = get_object_or_404(Question, id=question_id)
+	answers = Answer.objects.to_question(id=question_id)
 	return render(request, 'qa/question.html', {
 		'question': question,
 		'answers' : answers,

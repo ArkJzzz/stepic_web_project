@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install python3-dev mysql-server libmysqlclient-dev lynx	
+sudo apt-get install python3-dev mysql-server libmysqlclient-dev lynx -y
 #sudo apt-get install python-virtualenv 
 # sudo pip3 install django mysqlclient
 
@@ -14,8 +14,8 @@ rm -r ${BASE_DIR}/stepic_web_project/
 mkdir -p ${BASE_DIR}/web/{public/{img,js,css},{etc,uploads}}
 
 # remove old config and restart NGINX
-#sudo rm -f /etc/nginx/sites-enabled/*
-#sudo ln -s ${BASE_DIR}/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
+sudo rm -f /etc/nginx/sites-enabled/*
+sudo ln -s ${BASE_DIR}/web/etc/nginx-view.conf  /etc/nginx/sites-enabled/test.conf
 sudo /etc/init.d/nginx restart
 
 
