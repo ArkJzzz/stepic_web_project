@@ -19,10 +19,10 @@ from django.conf.urls import include, url
 from . import views
 
 urlpatterns = [
-    url(r'^test/$', views.test, name = 'test'), 					#URL = qa/test
-    url(r'^$', views.index, name='index'), 							#URL = qa/?page=2
-    url(r'^popular/$', views.popular, name='popular'), 				#URL = qa/popular/?page=3
-    url(r'^question/(?P<question_id>\d+)/$', views.question, name='question'), 	#URL = qa/question/5/
+    url(r'^test/$', views.test, name = 'test'), 					#URL = /test
+    url(r'^$', views.index, name='index'), 							#URL = /?page=2
+    url(r'^popular/$', views.popular, name='popular'), 				#URL = /popular/?page=3
+    url(r'^question/(?P<question_id>\d+)/$', views.question, name='question'), 	#URL = /question/5/
 ]
 
 
