@@ -23,7 +23,7 @@ class AnswerManager(models.Manager):
 class Question(models.Model):
 	objects = QuestionManager()
 	title = models.CharField(max_length=255)
-	text = models.TextField()
+	text = models.TextField(blank=True)
 	added_at = models.DateTimeField(blank=True, default=timezone.now)
 	rating = models.IntegerField(default=0)
 	author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
@@ -31,7 +31,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
 	objects = AnswerManager()
-	text = models.TextField()
+	text = models.TextField(blank=True)
 	added_at = models.DateTimeField(blank=True)
 	question = models.ForeignKey(Question, on_delete=models.DO_NOTHING)
 	author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
