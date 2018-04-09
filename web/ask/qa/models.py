@@ -17,7 +17,7 @@ class AnswerManager(models.Manager):
 	def all(self):
 		return self.order_by('-question')
 	def to_question(self, id):
-		return self.filter(question__id=id)
+		return self.filter(question_id=id)
 
 
 class Question(models.Model):
